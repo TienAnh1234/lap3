@@ -1,0 +1,30 @@
+<h1>{{countries}}</h1>
+
+
+<ol>
+<!-- vòng lặp foreach javascript, this là từng đối tượng trong mảng -->
+{{#each countries }}
+    <li>
+        {{this}}
+    </li>
+{{/each}}
+
+</ol>
+
+
+
+<table border ="1" id="x"> 
+    <tr>
+        <th>Sport</th>
+    </tr>
+    
+
+        {{#each sports }}
+            <tr>
+            <td>{{this}}</td>
+            </tr>
+        {{/each}}
+        
+</table>
+
+
