@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
+
+//URL: localhost:3000/
 router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-
+//URL: localhost:3000/greenwich
 router.get('/greenwich', function(req, res, next) {
   var name = 'Tien Anh';
   res.render('greenwichVietnam',{layout:'admin_layout',name});

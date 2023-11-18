@@ -10,9 +10,6 @@ var usersRouter = require('./routes/users');
 //khai báo tên và đường dẫn của router
 var fptRouter = require('./routes/fpt');
 
-
-
-
 var app = express();
 
 // view engine setup
@@ -25,10 +22,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// khai báo url của router
+// nhập đường dẫn là / thì web sẽ chạy vào indexRouter
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // khai báo url của router
+// nhập đường dẫn là /fpt thì web sẽ chạy vào fptRouter
 app.use('/fpt',fptRouter); 
 
 
@@ -56,6 +57,22 @@ app.use(function(err, req, res, next) {
 //app.listen(process.env.PORT || 3001) // dùng để đẩy lên render để chạy online web
 
 
-app.listen(process.env.PORT || 3000) // dùng để đẩy lên render để chạy online web
+const port = process.env.PORT || 3001;  // thiết lập lại port để có thể đẩy lên render chạy online web
+const host = 'localhost';
+
+app.listen(port, ()=>{
+  console.log('server is running at http://'+host+':'+port)
+
+}) // dùng để nghe cổng
 
 module.exports = app;
+
+
+
+// Start command trên render ghi là node app
+
+// Tạo project web bằng framework ExpressJS:
+// b1: npx express-generator --view=hbs
+// b2: npm install			//cài vào folder dùng để làm web
+// b3: npm install -g nodemon		//cài vào folder dùng để làm web
+// b4: nodemon 			//dùng để chạy web
